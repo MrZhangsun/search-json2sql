@@ -17,10 +17,13 @@ public class FieldConfiguration {
 
     private final String field;
 
+    private final String label;
+
     private final List<String> operations;
 
-    public FieldConfiguration(String field, List<String> operations) {
+    public FieldConfiguration(String field, String label, List<String> operations) {
         this.field = field;
+        this.label = label;
         this.operations = operations;
     }
 
@@ -30,5 +33,9 @@ public class FieldConfiguration {
 
     public List<String> getOperations() {
         return operations;
+    }
+
+    public String getLabel() {
+        return label;
     }
 }

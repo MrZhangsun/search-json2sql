@@ -19,9 +19,12 @@ public class TheFieldType<T, R> {
 
     private final FieldTypeEnums fieldType;
 
-    public TheFieldType(PropertyFunction<T, R> field, FieldTypeEnums fieldType) {
+    private final String label;
+
+    public TheFieldType(PropertyFunction<T, R> field, String label, FieldTypeEnums fieldType) {
         this.field = field;
         this.fieldType = fieldType;
+        this.label = label;
     }
 
     public PropertyFunction<T, R> getField() {
@@ -30,5 +33,9 @@ public class TheFieldType<T, R> {
 
     public FieldTypeEnums getFieldType() {
         return fieldType;
+    }
+
+    public String getLabel() {
+        return label;
     }
 }

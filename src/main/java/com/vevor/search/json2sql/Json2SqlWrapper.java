@@ -229,13 +229,14 @@ public class Json2SqlWrapper {
                 json2SqlWrapper.fieldConfigurations = new ArrayList<>();
             }
             PropertyFunction<T, R> fieldFunc = field.getField();
+            String label = field.getLabel();
             String fieldName = fieldFunc.getFieldName(fieldFunc);
             OperatorEnums[] operators = field.getFieldType().getOperators();
             List<String> operatorNames = Arrays.stream(operators)
                     .map(Enum::name)
                     .collect(Collectors.toList());
 
-            FieldConfiguration fieldConfiguration = new FieldConfiguration(fieldName, operatorNames);
+            FieldConfiguration fieldConfiguration = new FieldConfiguration(fieldName, label, operatorNames);
             json2SqlWrapper.fieldConfigurations.add(fieldConfiguration);
             return this;
         }
