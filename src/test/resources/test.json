@@ -1,0 +1,104 @@
+[
+  {
+    "type": "RULES_RELATION",
+    "relation": "AND",
+    "rules": [
+      {
+        "type": "FIELDS_RELATION",
+        "relation": "AND",
+        "field":"id",
+        "operator":"LIKE",
+        "value":[
+          "关键字"
+        ],
+        "toValue":null,
+        "className":"STRING_IN",
+        "format":"input"
+      },
+      {
+        "type": "FIELDS_RELATION",
+        "relation": "AND",
+        "field":"b",
+        "operator":"MORE_THAN",
+        "value":[
+          "10.1"
+        ],
+        "toValue":null,
+        "className":"number",
+        "format":"input"
+      },
+      {
+        "type": "FIELDS_RELATION",
+        "relation": "OR",
+        "field":"e",
+        "operator":"MORE_THAN_AND_EQUAL",
+        "value":[
+          "2023-07-07 00:00:00"
+        ],
+        "toValue":null,
+        "className":"date",
+        "format":"input"
+      },
+      {
+        "type": "FIELDS_RELATION",
+        "relation": "AND",
+        "field":"d",
+        "operator":"NOT_IN",
+        "value":[
+          "EMPTY_VALUE"
+        ],
+        "toValue":null,
+        "className":"string_in",
+        "format":"multiList"
+      }
+    ]
+  },
+  {
+    "type": "RULES_RELATION",
+    "relation": "OR",
+    "rules": [
+      {
+        "type": "FIELDS_RELATION",
+        "relation": "AND",
+        "field":"e",
+        "operator":"LESS_THAN_AND_EQUAL",
+        "value":[
+          "2023-07-05 23:59:59"
+        ],
+        "toValue":null,
+        "className":"date",
+        "format":"input"
+      },
+      {
+        "type": "RULES_RELATION",
+        "relation": "AND",
+        "rules": [
+          {
+            "type": "FIELDS_RELATION",
+            "relation": "AND",
+            "field":"e",
+            "operator":"LESS_THAN_AND_EQUAL",
+            "value":[
+              "2023-07-05 23:59:59"
+            ],
+            "toValue":null,
+            "className":"date",
+            "format":"input"
+          },
+          {
+            "type": "FIELDS_RELATION",
+            "relation": "OR",
+            "field":"e",
+            "operator":"LESS_THAN_AND_EQUAL",
+            "value":[
+              "2023-07-05 23:59:59"
+            ],
+            "toValue":null,
+            "className":"date",
+            "format":"input"
+          }
+        ]
+      }
+    ]
+  }
+]
