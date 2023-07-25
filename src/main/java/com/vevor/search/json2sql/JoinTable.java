@@ -30,7 +30,7 @@ public class JoinTable<T1, R1,T2, R2> {
         this.joinConditions = new ArrayList<>();
     }
 
-    public JoinTable on(PropertyFunction<T1, R1> sourceField,
+    public JoinTable<T1, R1,T2, R2> on(PropertyFunction<T1, R1> sourceField,
                         PropertyFunction<T2, R2>  targetField) {
         JoinCondition<T1, R1, T2, R2> joinCondition = new JoinCondition<>(sourceField, targetField);
         joinConditions.add(joinCondition);

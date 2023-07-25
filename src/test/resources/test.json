@@ -6,46 +6,10 @@
       {
         "type": "FIELDS_RELATION",
         "relation": "AND",
-        "field":"id",
-        "operator":"LIKE",
-        "value":[
-          "关键字"
-        ],
-        "toValue":null,
-        "className":"STRING_IN",
-        "format":"input"
-      },
-      {
-        "type": "FIELDS_RELATION",
-        "relation": "AND",
-        "field":"b",
-        "operator":"MORE_THAN",
-        "value":[
-          "10.1"
-        ],
-        "toValue":null,
-        "className":"number",
-        "format":"input"
-      },
-      {
-        "type": "FIELDS_RELATION",
-        "relation": "OR",
-        "field":"e",
-        "operator":"MORE_THAN_AND_EQUAL",
-        "value":[
-          "2023-07-07 00:00:00"
-        ],
-        "toValue":null,
-        "className":"date",
-        "format":"input"
-      },
-      {
-        "type": "FIELDS_RELATION",
-        "relation": "AND",
-        "field":"d",
+        "field":"`order`.`code`",
         "operator":"NOT_IN",
         "value":[
-          "EMPTY_VALUE"
+          "adfasdsd"
         ],
         "toValue":null,
         "className":"string_in",
@@ -60,7 +24,7 @@
       {
         "type": "FIELDS_RELATION",
         "relation": "AND",
-        "field":"e",
+        "field":"`order`.`createTime`",
         "operator":"LESS_THAN_AND_EQUAL",
         "value":[
           "2023-07-05 23:59:59"
@@ -75,26 +39,14 @@
         "rules": [
           {
             "type": "FIELDS_RELATION",
-            "relation": "AND",
-            "field":"e",
-            "operator":"LESS_THAN_AND_EQUAL",
-            "value":[
-              "2023-07-05 23:59:59"
-            ],
-            "toValue":null,
-            "className":"date",
-            "format":"input"
-          },
-          {
-            "type": "FIELDS_RELATION",
             "relation": "OR",
-            "field":"e",
-            "operator":"LESS_THAN_AND_EQUAL",
+            "field":"`customer`.`name`",
+            "operator":"LIKE",
             "value":[
-              "2023-07-05 23:59:59"
+              "张三"
             ],
             "toValue":null,
-            "className":"date",
+            "className":"STRING_LIKE",
             "format":"input"
           }
         ]

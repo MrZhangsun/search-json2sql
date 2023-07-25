@@ -10,11 +10,10 @@ import com.vevor.search.json2sql.enums.RuleTypeEnums;
 import java.util.List;
 import java.util.Set;
 
-public class Json2SqlEngine {
-
+class Json2SqlEngine {
     private Json2SqlEngine() {}
 
-    public static String convert(List<Condition> conditions, Set<String> existFields) {
+    static String convert(List<Condition> conditions, Set<String> existFields) {
         // 1. 参数校验
         if (conditions == null) {
             return null;
@@ -37,8 +36,6 @@ public class Json2SqlEngine {
                 // 2.2. 具体规则解析
             } else if (RuleTypeEnums.FIELDS_RELATION.equals(condition.getType())) {
                 String field = condition.getField();
-                FieldTypeEnums className = condition.getClassName();
-
                 if (!existFields.contains(field)) {
                     throw new IllegalArgumentException("Doesn't exist field: " + field);
                 }

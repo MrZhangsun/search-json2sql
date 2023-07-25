@@ -11,9 +11,6 @@ import lombok.Data;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author ：Murphy ZhangSun
@@ -25,12 +22,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Data
 public class Condition {
-
-    /**
-     * 多表字段映射关系
-     */
-    private static Map<String, Set<String>> tableFieldMap = new ConcurrentHashMap<>();
-
     /**
      * 代表当前规则的类型：rules_relation，
      */
@@ -93,31 +84,6 @@ public class Condition {
     }
 
     public String getField() {
-        if (tableFieldMap == null || tableFieldMap.isEmpty()) {
-            return String.format("`%s`", this.field);
-        }
-
-        tableFieldMap.forEach((tableName, fields) -> {
-            for (String f : fields) {
-                if (f.equalsIgnoreCase(this.field)) {
-                    this.field = String.format("`%s`.`%s`", tableName, f);
-                }
-            }
-        });
-
         return this.field;
-    }
-
-    public static void addTableFields(String tableName, Set<String> fields) {
-        if (tableFieldMap.containsKey(tableName)) {
-            Set<String> exists = tableFieldMap.get(tableName);
-            exists.addAll(fields);
-            return;
-        }
-        tableFieldMap.put(tableName, fields);
-    }
-
-    public static Set<String> tableNames() {
-        return tableFieldMap.keySet();
     }
 }
