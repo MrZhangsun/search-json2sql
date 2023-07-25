@@ -3,13 +3,10 @@
  */
 package com.vevor.search.json2sql;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.io.Serializable;
 import java.lang.invoke.SerializedLambda;
 import java.lang.reflect.Method;
 import java.util.IllegalFormatFlagsException;
-import java.util.Locale;
 import java.util.function.Function;
 
 /**
@@ -18,7 +15,7 @@ import java.util.function.Function;
  * @description ：
  * @program ：user-growth
  * @date ：Created in 2023/7/24 17:13
- * @since ：
+ * @since ：1.0.0
  */
 public interface PropertyFunction<T, R> extends Function<T, R>, Serializable {
 
@@ -48,17 +45,14 @@ public interface PropertyFunction<T, R> extends Function<T, R>, Serializable {
             getMethodName = getMethodName.substring(2);
         }
         // 小写第一个字母
-        return firstToLowerCase(getMethodName);
+        return CaseUtils.camelToSnake(getMethodName);
     }
 
     default String fieldFormat(String tableName, String fieldName) {
-        return String.format("`%s`.`%s`", tableName, fieldName).toLowerCase(Locale.ROOT);
+        tableName = CaseUtils.camelToSnake(tableName);
+        fieldName = CaseUtils.camelToSnake(fieldName);
+        return String.format("`%s`.`%s`", tableName, fieldName);
     }
 
-    default String firstToLowerCase(String param) {
-        if (StringUtils.isBlank(param)) {
-            return "";
-        }
-        return param.substring(0, 1).toLowerCase() + param.substring(1);
-    }
+
 }

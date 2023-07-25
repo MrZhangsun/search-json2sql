@@ -11,7 +11,6 @@ import com.vevor.search.json2sql.enums.JoinTypeEnums;
 import javax.naming.ConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,17 +30,19 @@ public class Main {
         Json2SqlWrapper json2SqlWrapper = new Json2SqlWrapper.Configuration()
                 .fields()
                     .addField(new TheFieldType<>(Order::getCode, FieldTypeEnums.STRING_IN))
-                    .addField(new TheFieldType<>(Order::getCreateTime, FieldTypeEnums.DATE))
+                    .addField(new TheFieldType<>(Order::getCreatedTime, FieldTypeEnums.DATE))
                     .addField(new TheFieldType<>(Customer::getName, FieldTypeEnums.STRING_LIKE))
+                    .addField(new TheFieldType<>(Product::getSku, FieldTypeEnums.STRING_IN))
                 .sql()
-                    .addSelectItems(Order::getcId, Order::getId, Order::getMoney)
-                    .addSelectItems(Product::getcId, Product::getId, Product::getMoney)
+                    .addSelectItems(Order::getId, Order::getCode, Order::getMoney, Order::getCreatedTime)
+                    .addSelectItems(Product::getId, Product::getSku, Product::getTitle, Product::getDescription)
+                    .addSelectItems(Customer::getId, Customer::getName, Customer::getAge, Customer::getBirthday)
                     .from(Order.class)
                     .join(Customer.class, JoinTypeEnums.LEFT_JOIN)
-                        .addOn(Order::getcId, Customer::getId)
+                        .addOn(Order::getCustomerId, Customer::getId)
                         .parent()
-                    .join(Product.class, JoinTypeEnums.FULL_JOIN)
-                        .addOn(Product::getId, Order::getId)
+                    .join(Product.class, JoinTypeEnums.LEFT_JOIN)
+                        .addOn(Order::getProductId, Product::getId)
                         .parent()
                     .parent()
                 .config();

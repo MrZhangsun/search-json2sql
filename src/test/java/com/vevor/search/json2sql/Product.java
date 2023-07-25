@@ -4,6 +4,7 @@
 package com.vevor.search.json2sql;
 
 import lombok.Data;
+import org.apache.commons.text.CaseUtils;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -21,61 +22,10 @@ public class Product {
 
     private Integer id;
 
-    private String code;
+    private String sku;
 
-    private Date createTime;
+    private String title;
 
-    private BigDecimal money;
+    private String description;
 
-    private Integer cId;
-
-    private Long customerId;
-
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public BigDecimal getMoney() {
-        return money;
-    }
-
-    public void setMoney(BigDecimal money) {
-        this.money = money;
-    }
-
-    public Integer getcId() {
-        return cId;
-    }
-
-    public void setcId(Integer cId) {
-        this.cId = cId;
-    }
 }

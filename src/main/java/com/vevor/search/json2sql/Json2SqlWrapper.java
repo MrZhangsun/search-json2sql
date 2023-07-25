@@ -54,6 +54,7 @@ public class Json2SqlWrapper {
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             String fieldName = field.getName();
+            fieldName = CaseUtils.camelToSnake(fieldName);
             String tableFieldName = fieldFormat(tableName, fieldName);
             this.allTableFields.add(tableFieldName);
         }
@@ -130,7 +131,7 @@ public class Json2SqlWrapper {
 
     private static String getTableName(Class<?> targetTable) {
         String simpleName = targetTable.getSimpleName();
-        return simpleName.toLowerCase(Locale.ROOT);
+        return CaseUtils.camelToSnake(simpleName);
     }
 
     /**

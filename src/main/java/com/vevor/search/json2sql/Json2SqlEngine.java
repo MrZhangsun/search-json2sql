@@ -3,10 +3,8 @@
  */
 package com.vevor.search.json2sql;
 
-import com.vevor.search.json2sql.enums.FieldTypeEnums;
 import com.vevor.search.json2sql.enums.OperatorEnums;
 import com.vevor.search.json2sql.enums.RuleTypeEnums;
-
 import java.util.List;
 import java.util.Set;
 
