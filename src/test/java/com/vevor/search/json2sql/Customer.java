@@ -4,7 +4,6 @@
 package com.vevor.search.json2sql;
 
 import lombok.Data;
-
 import java.util.Date;
 
 /**
