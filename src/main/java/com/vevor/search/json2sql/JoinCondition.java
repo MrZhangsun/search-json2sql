@@ -14,15 +14,14 @@ import lombok.Getter;
  * @since ：1.9.0
  */
 @Getter
-public class JoinCondition<T1, R1, T2, R2> {
+public class JoinCondition {
 
-    private final PropertyFunction<T1, R1> sourceField;
+    private final PropertyFunction<?, ?> sourceField;
 
-    private final PropertyFunction<T2, R2> targetField;
+    private final PropertyFunction<?, ?> targetField;
 
-    public JoinCondition(PropertyFunction<T1, R1> sourceField, PropertyFunction<T2, R2> targetField) {
+    public JoinCondition(PropertyFunction<?, ?> sourceField, PropertyFunction<?, ?> targetField) {
         this.sourceField = sourceField;
         this.targetField = targetField;
     }
-
 }

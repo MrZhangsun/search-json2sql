@@ -19,7 +19,7 @@ import java.util.function.Function;
  */
 public interface PropertyFunction<T, R> extends Function<T, R>, Serializable {
 
-    default String getFieldName(PropertyFunction<T, ?> func) {
+    default String getFieldName(PropertyFunction<?, ?> func) {
         try {
             // writeReplace 方法是 Serializable 接口中的一个特殊方法。当一个对象实现了 Serializable 接口时，Java 序列化框架会在序列化对象时调用 writeReplace 方法，而不是默认的序列化过程。这个方法允许开发者在对象序列化之前进行一些定制操作。
             // 通过获取 writeReplace 方法，实际上是为了获取 SerializedLambda 对象，从而可以解析方法引用的信息，包括方法引用所在的类、方法名称、方法参数等信息。

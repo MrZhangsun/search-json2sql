@@ -18,11 +18,11 @@ import java.util.List;
  * @since ：1.9.0
  */
 @Getter
-public class JoinTable<T1, R1,T2, R2> {
+public class JoinTable {
 
     private final Class<?> targetTable;
     private final JoinTypeEnums joinType;
-    private final List<JoinCondition<T1, R1,T2, R2>> joinConditions;
+    private final List<JoinCondition> joinConditions;
 
     public JoinTable(Class<?> targetTable, JoinTypeEnums joinType) {
         this.targetTable = targetTable;
@@ -30,10 +30,9 @@ public class JoinTable<T1, R1,T2, R2> {
         this.joinConditions = new ArrayList<>();
     }
 
-    public JoinTable<T1, R1,T2, R2> on(PropertyFunction<T1, R1> sourceField,
-                        PropertyFunction<T2, R2>  targetField) {
-        JoinCondition<T1, R1, T2, R2> joinCondition = new JoinCondition<>(sourceField, targetField);
+    public void on(PropertyFunction<?, ?> sourceField,
+                   PropertyFunction<?, ?>  targetField) {
+        JoinCondition joinCondition = new JoinCondition(sourceField, targetField);
         joinConditions.add(joinCondition);
-        return this;
     }
 }

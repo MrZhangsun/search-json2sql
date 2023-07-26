@@ -46,8 +46,7 @@ public class Json2SqlWrapper {
     /**
      * 所有的联查表
      */
-    private final List<JoinTable<Void, String, Void, String>>
-            joinTables = new ArrayList<>();
+    private final List<JoinTable> joinTables = new ArrayList<>();
 
     private void collectTableFields(Class<?> clazz) {
         String tableName = getTableName(clazz);
@@ -101,8 +100,8 @@ public class Json2SqlWrapper {
             Iterator<JoinCondition> joinConditionIterator = joinConditions.iterator();
             while (joinConditionIterator.hasNext()) {
                 JoinCondition joinCondition = joinConditionIterator.next();
-                PropertyFunction sourceField = joinCondition.getSourceField();
-                PropertyFunction targetField = joinCondition.getTargetField();
+                PropertyFunction<?, ?> sourceField = joinCondition.getSourceField();
+                PropertyFunction<?, ?> targetField = joinCondition.getTargetField();
                 String sourceFieldName = sourceField.getFieldName(sourceField);
                 String targetFieldName = targetField.getFieldName(targetField);
                 sqlBuilder.append(sourceFieldName)
@@ -303,7 +302,7 @@ public class Json2SqlWrapper {
          */
         public JoinConfig join(Class<?> joinTable, JoinTypeEnums joinType) {
             // 添加/去重
-            this.currentJoinTable = new JoinTable<>(joinTable, joinType);
+            this.currentJoinTable = new JoinTable(joinTable, joinType);
             this.json2SqlWrapper.joinTables.add(this.currentJoinTable);
 
             // 添加全表字段
