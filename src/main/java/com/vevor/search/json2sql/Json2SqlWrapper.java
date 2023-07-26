@@ -310,10 +310,6 @@ public class Json2SqlWrapper {
             return new JoinConfig(this);
         }
 
-        public Json2SqlWrapper config() {
-            return this.configuration.json2SqlWrapper;
-        }
-
         public Configuration parent() {
             return this.configuration;
         }
