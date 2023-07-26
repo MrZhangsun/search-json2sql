@@ -21,6 +21,8 @@ public class FieldConfiguration {
 
     private final List<String> operations;
 
+    private List<Object> values;
+
     public FieldConfiguration(String field, String label, List<String> operations) {
         this.field = field;
         this.label = label;
@@ -37,5 +39,13 @@ public class FieldConfiguration {
 
     public String getLabel() {
         return label;
+    }
+
+    public List<Object> getValues() {
+        return values;
+    }
+
+    public void setValues(List<Object> values) {
+        this.values = values;
     }
 }
